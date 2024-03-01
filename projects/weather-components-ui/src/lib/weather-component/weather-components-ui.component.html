@@ -1,0 +1,33 @@
+<div class="weather-card">
+  <div class="search">
+    <form>
+    <input type="search" [(ngModel)]="searchCity" [ngModelOptions]="{standalone: true}" placeholder="enter city name" spellcheck="false" />
+    <button (click)="onSearch()">
+      <i class="bi bi-search"></i>
+    </button>
+    </form>
+  </div>
+  <div class="weather">
+    <img class="weather-icon"
+      src="{{weather?.wIcon?.src}}"
+      alt="...." />
+    <h1 class="temp">{{weather?.temperature | degree}}</h1>
+    <h2 class="city">{{weather?.city}}</h2>
+    <div class="details">
+      <div style="display: flex;" class="col">
+        <img class="humi" src="https://static-00.iconduck.com/assets.00/humidity-icon-2048x1675-xxsge5os.png" />
+        <div class="info">
+          <p class="humidity">{{weather?.humidity | percentile}}</p>
+          <p>Humidity</p>
+        </div>
+      </div>
+      <div class="col">
+        <img src="https://cdn-icons-png.flaticon.com/512/136/136712.png" />
+        <div class="info">
+          <p class="wind">{{weather?.windSpeed | speed}}</p>
+          <p>Wind Speed</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

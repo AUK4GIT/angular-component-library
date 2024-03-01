@@ -23,16 +23,6 @@
             }
           },
           "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/weather-components-ui/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
-          }
         }
       }
     },
@@ -53,18 +43,15 @@
             "outputPath": "dist/my-weather-app",
             "index": "projects/my-weather-app/src/index.html",
             "browser": "projects/my-weather-app/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/my-weather-app/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/my-weather-app/src/favicon.ico",
-              "projects/my-weather-app/src/assets"
+              "projects/my-weather-app/src/assets",
+              "projects/my-weather-app/src/manifest.webmanifest"
             ],
-            "styles": [
-              "projects/my-weather-app/src/styles.scss"
-            ],
+            "styles": ["projects/my-weather-app/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -81,7 +68,8 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "serviceWorker": "projects/my-weather-app/ngsw-config.json"
             },
             "development": {
               "optimization": false,
@@ -107,25 +95,6 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "buildTarget": "my-weather-app:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "projects/my-weather-app/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/my-weather-app/src/favicon.ico",
-              "projects/my-weather-app/src/assets"
-            ],
-            "styles": [
-              "projects/my-weather-app/src/styles.scss"
-            ],
-            "scripts": []
           }
         }
       }
