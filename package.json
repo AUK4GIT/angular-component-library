@@ -4,13 +4,17 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "build": "ng build",
     "build:lib": "cd projects/weather-components-ui && ng build --configuration production",
+    "build:component": "ng build web-component --configuration production --output-hashing none",
+    "build:copy": "cp dist/web-component/browser/main.js projects/Vanilla-JS-app/main.js && cp dist/web-component/browser/polyfills.js projects/Vanilla-JS-app/polyfills.js",
     "watch": "ng build --watch --configuration development",
     "test": "jest --verbose",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "test:lib": "jest --coverage --config ./jest.lib.config.ts",
-    "test:app": "jest --coverage --config ./jest.app.config.ts"
+    "test:app": "jest --coverage --config ./jest.app.config.ts",
+    "package": "cat dist/web-component/browser/{main,polyfills}.js > dist/web-component/browser/component-lib.js"
   },
   "private": true,
   "dependencies": {

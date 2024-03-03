@@ -5,11 +5,19 @@ import { FormsModule } from '@angular/forms';
 import { DegreePipe } from './pipes/degree.pipe';
 import { SpeedPipe } from './pipes/speed.pipe';
 import { PercentilePipe } from './pipes/percentile.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'nw-weather-components-ui',
   standalone: true,
-  imports: [FormsModule, DegreePipe, SpeedPipe, PercentilePipe],
+  imports: [
+    HttpClientModule,
+    FormsModule,
+    DegreePipe,
+    SpeedPipe,
+    PercentilePipe,
+  ],
+  providers: [WeatherComponentsUiService],
   templateUrl: './weather-components-ui.component.html',
   styleUrls: ['./weather-components-ui.component.scss'],
   encapsulation: ViewEncapsulation.Emulated,

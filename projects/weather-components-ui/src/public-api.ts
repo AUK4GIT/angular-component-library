@@ -4,4 +4,3 @@
 
 export * from './lib/weather-component/weather-components-ui.service';
 export * from './lib/weather-component/weather-components-ui.component';
-export * from './lib/weather-component/weather-components-ui.module';
