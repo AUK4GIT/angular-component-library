@@ -7,7 +7,7 @@ import { catchError, map } from 'rxjs';
   providedIn: 'root',
 })
 export class WeatherComponentsUiService {
-  apiKey = '97ed86b99fdcf738c7a080e0fa9fde20';
+  apiKey = '';
   apiUrl = 'https://api.openweathermap.org/data/2.5/weather?&units=metric&q=';
 
   wIcons: WIcon[] = [
@@ -43,29 +43,37 @@ export class WeatherComponentsUiService {
 
   constructor(private httpClient: HttpClient) {}
 
+  setAPIKey(apiKey: string) {
+    this.apiKey = apiKey;
+  }
+
   get(city = 'Hyderabad') {
-    return this.httpClient
-      .get<Weather>(this.apiUrl + city + `&appid=${this.apiKey}`)
-      .pipe(
-        map((response: any) => {
-          console.log('data-> ', response);
-          const wIconType = response.weather[0].main.toLowerCase();
-          const wIcon = this.wIcons.find(
-            (icon: WIcon) => icon.type === wIconType
-          );
-          const weather: Weather = {
-            temperature: response.main.temp,
-            city: response.name,
-            humidity: response.main.humidity,
-            windSpeed: response.wind.speed,
-            wIcon: wIcon,
-          };
-          return weather;
-        }),
-        catchError((err) => {
-          alert(err);
-          return err;
-        })
-      );
+    if (this.apiKey && this.apiKey !== '') {
+      return this.httpClient
+        .get<Weather>(this.apiUrl + city + `&appid=${this.apiKey}`)
+        .pipe(
+          map((response: any) => {
+            console.log('data-> ', response);
+            const wIconType = response.weather[0].main.toLowerCase();
+            const wIcon = this.wIcons.find(
+              (icon: WIcon) => icon.type === wIconType
+            );
+            const weather: Weather = {
+              temperature: response.main.temp,
+              city: response.name,
+              humidity: response.main.humidity,
+              windSpeed: response.wind.speed,
+              wIcon: wIcon,
+            };
+            return weather;
+          }),
+          catchError((err) => {
+            return err;
+          })
+        );
+    } else {
+      console.assert(this.apiKey.length > 0, 'Please provide APIKEY property');
+      throw new Error('Please provide APIKEY property');
+    }
   }
 }

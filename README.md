@@ -2,26 +2,30 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.1.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. weather-components-ui: Angular library with one standalone component 'weather-component<nw-weather-components-ui>' and related service(weather-components-ui.service), interfaces and pipes
+
+2. my-weather-app: Angular app that assists in developing the components in the library 'weather-components-ui'
+
+3. web-component: Angular app that assist in converting the standalone component to a custom element that is framework agnostic.
+
+4. Vanilla-JS-app: A javascript app to demo the itegration of the custom element.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Run `npm run build:lib` to build the library. The build artifacts will be stored in the `dist/weather-components-ui` directory.
+2. Run `npm run build:component` to build the custom element created out of standalone web component. The build artifacts will be stored in the `dist/web-component` directory.
+3. Run `npm run build:copy` to copy the main.js and polyfills.js files from `dist/web-components/browser/` directory to `Vanilla-JS-app` directory. Add the tag `nw-weather-components-ui` in the index.html file in the directory along with bootstrap css cdn and custom fonts cdn. Also, add/override the below styles
+   `CSS variable to be overridden styles.scss global styles`
+   `@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");`
+   `--w-font-family: "Poppins",'Times New Roman',Times,serif;`
+   `--w-bg-gradient: linear-gradient(120deg, #834e9c, #d42643);`
 
-## Running unit tests
+   `<nw-weather-components-ui></nw-weather-components-ui>`
+   `<script>`
+   `const weather_element = document.querySelector('nw-weather-components-ui');`
+   `weather_element.apiKey = "APIKEY";`
+   `</script>`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+##Pending unit tests

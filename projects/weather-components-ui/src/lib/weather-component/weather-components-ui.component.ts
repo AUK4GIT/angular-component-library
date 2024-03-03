@@ -25,9 +25,11 @@ import { HttpClientModule } from '@angular/common/http';
 export class WeatherComponentsUiComponent {
   weather?: Weather;
   searchCity: string = '';
+  @Input() apiKey: string | undefined;
 
   constructor(private dataService: WeatherComponentsUiService) {}
   ngOnInit() {
+    this.apiKey ? this.dataService.setAPIKey(this.apiKey) : '';
     this.checkWeather();
   }
 
