@@ -28,4 +28,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
    `weather_element.apiKey = "APIKEY";`
    `</script>`
 
-##Pending unit tests
+## Pending unit tests
+
+## Theory
+
+1. Create angular workspace `ng new nw-work-space --create-application=false`
+2. Create an angular library in the workspace to develop the standalone components `ng g library weather-components-ui --prefix nw`
+3. Create an angular application in the same workspace to develop the component in the library visually `ng g application my-weather-app`
+4. Create another angular application and @angular/elements package and convert the standalone component inside the library to a custom element that is framework agnostic.
