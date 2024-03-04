@@ -1,9 +1,10 @@
 import { DegreePipe } from './degree.pipe';
+import { describe, expect, it } from '@jest/globals';
 
 describe('DegreePipe', () => {
   let pipe: DegreePipe;
 
-  beforeAll(() => {
+  beforeEach(() => {
     pipe = new DegreePipe();
   });
 

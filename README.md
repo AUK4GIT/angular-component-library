@@ -5,14 +5,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Code scaffolding
 
 1. weather-components-ui: Angular library with one standalone component 'weather-component<nw-weather-components-ui>' and related service(weather-components-ui.service), interfaces and pipes
-
 2. my-weather-app: Angular app that assists in developing the components in the library 'weather-components-ui'
-
 3. web-component: Angular app that assist in converting the standalone component to a custom element that is framework agnostic.
-
 4. Vanilla-JS-app: A javascript app to demo the itegration of the custom element.
 
-## Build
+## Development
+
+execute the below shell script to run the library and development related changes
+
+1. ./auto.sh
+
+## Build & Integration
 
 1. Run `npm run build:lib` to build the library. The build artifacts will be stored in the `dist/weather-components-ui` directory.
 2. Run `npm run build:component` to build the custom element created out of standalone web component. The build artifacts will be stored in the `dist/web-component` directory.
@@ -28,7 +31,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
    `weather_element.apiKey = "APIKEY";`
    `</script>`
 
-## Pending unit tests
+## Unit tests
+
+Unit tests are written for the components in the directory `projects/weather-components-ui/src/lib/weather-component`.
+There are some integration issues with Jest
+Run `npm run test:lib`
 
 ## Theory
 
